@@ -7,7 +7,7 @@ export function BookList({ children }) {
 }
 
 export function BookListItem({
-    image = "https://placehold.it/300x300",
+    image = "https://placehold.it/100x100",
     title,
     authors,
     link,

@@ -21,7 +21,7 @@ class Layout extends Component{
     handleSubmitForm = event => {
         event.preventDefault()
         API.searchBooks(this.state.bookSearch)
-        .then(res => this.setState({ books: res.data }))
+        .then(res => this.setState({ books: res.data.items }))
         .catch(err => console.log(err))
     }
     render() {
@@ -66,12 +66,12 @@ class Layout extends Component{
                                     {this.state.books.map(book => {
                                         return(
                                             <BookListItem
-                                            key={book.title}
-                                            title={book.title}
-                                            authors={book.authors}
-                                            image={book.image}
-                                            link={book.link}
-                                            date={book.date}
+                                            key={book.volumeInfo.etag}
+                                            title={book.volumeInfo.title}
+                                            authors={book.volumeInfo.authors}
+                                            image={book.volumeInfo.imageLinks.smallThumbnail}
+                                            link={book.volumeInfo.selfLink}
+                                            date={book.volumeInfo.publishedDate}
                                             />
                                         )
                                     })}
