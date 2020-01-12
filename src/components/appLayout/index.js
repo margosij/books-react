@@ -70,7 +70,7 @@ class Layout extends Component{
                                             title={book.volumeInfo.title}
                                             authors={book.volumeInfo.authors}
                                             image={book.volumeInfo.imageLinks.smallThumbnail}
-                                            link={book.volumeInfo.selfLink}
+                                            link={book.selfLink}
                                             date={book.volumeInfo.publishedDate}
                                             />
                                         )
