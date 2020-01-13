@@ -36,9 +36,8 @@ export function BookListItem({
         console.log("Load Book", res)
     }
 
-    const handleFormSubmit = (event, bookID) => {
+    const handleFormSubmit = event => {
         event.preventDefault() 
-        if (1 === 1){
             API.saveBook({
                 key: key,
                 title: title,
@@ -48,7 +47,6 @@ export function BookListItem({
             })
             .then(res => loadBooks(res))
             .catch(err => console.log(err))
-        }
     }
     return(
         <li className="list-group-item">
@@ -58,7 +56,7 @@ export function BookListItem({
                         <Thumbnail src={image} />
                     </Col>
                     <Col size="xs-8 sm-9">
-                        <SaveBtn onClick={e => handleFormSubmit(e.key)} />
+                        <SaveBtn onClick={handleFormSubmit} />
                         <h3>{title}</h3>
                         <p>Author: {authors}</p>
                         <a rel="noopener noreferrer" target="_blank" href={link}>Here's the Link!</a>
