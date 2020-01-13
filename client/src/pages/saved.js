@@ -1,7 +1,9 @@
 import React, { Component } from "react"
 import Jumbotron from "../../../src/components/Jumbotron"
-import { Row, Col, Container } from "../../../src/components/Grid"
+import { Row, Col } from "../../../src/components/Grid"
 import API from "../utils/API"
+import Layout from "../components/appLayout"
+import { List } from "../components/List"
 
 class Saved extends Component {
     state = {
@@ -31,15 +33,29 @@ class Saved extends Component {
             <>
             <Jumbotron />
             <Row>
-                <Column>
+                <Col>
                     {this.state.savedBooks ? (
-                        <List
-                        
+                        <List>
+                        {this.state.savedBooks.map(book => (
+                            <Layout
+                            key={book.etag}
+                            title={book.title}
+                            authors={book.authors}
+                            image={book.image}
+                            link={book.link}
+                            date={book.date}
+                            />
+                        ))}
+                        </List>
+                    ) : (
+                        <h3 className="text-center">No Results to Display</h3>
                     )}
 
-                </Column>
+                </Col>
             </Row>
             </>
         )
     }
 }
+
+export default Saved
