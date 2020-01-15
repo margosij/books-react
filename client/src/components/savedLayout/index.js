@@ -1,6 +1,7 @@
 import React from "react";
 import {Row, Col} from "../Grid"
 
+
 const SavedLayout = props => {
     return (props.savedBooks.length === 0) ? (
         <div className="card">
@@ -40,7 +41,7 @@ const SavedLayout = props => {
                                     <button className="deleteBook btn btn-danger" id={savedbook._id} onClick={() => props.handleDeleteButton(savedbook._id)}>
                                         Delete Book
                                     </button>
-                                    <a href={savedbook.link} target="_blank">
+                                    <a rel="noopener noreferrer" target="_blank" href={savedbook.link}>
                                         <button className="viewBook btn btn-success">
                                             View Book
                                         </button>

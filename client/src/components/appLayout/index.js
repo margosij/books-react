@@ -12,7 +12,8 @@ class SaveBooks extends Component {
 
     componentDidMount() {
         API.getBook()
-        .then(res => this.setState({ savedBooks: res.data }))
+        .then(res => { console.log(res, "COMPONENT RES")
+            this.setState({ savedBooks: res })})
         .catch(err => console.log(err))
     }
 
@@ -23,6 +24,8 @@ class SaveBooks extends Component {
     }
 
     render() {
+        console.log(this.state, "consoling the state!")
+        if(this.state.savedBooks && !this.state.savedBooks.length) return "Loading!";
         return(
             <Container>
                 <Jumbotron />

@@ -1,16 +1,16 @@
 import React, { Component } from "react"
 import Jumbotron from "../components/Jumbotron"
 import { Row, Col, Container } from "../components/Grid"
-import API from "../utils/API"
+// import API from "../utils/API"
 import SaveBooks from "../components/appLayout"
 import { List } from "../components/List"
 import DeleteBtn from "../components/deleteButton"
 
 class Saved extends Component {
-    // state = {
-    //     savedBooks: [],
-    //     loaded: false
-    // }
+    state = {
+        savedBooks: [],
+        loaded: false
+    }
 
 
     // componentDidMount() {
@@ -45,7 +45,7 @@ class Saved extends Component {
             <Container>
             <Row>
                 <Col size="xs-4 sm-2">
-                    {this.state.savedBooks ? (
+                    {this.state.savedBooks && this.state.savedBooks.length ? (
                         <List>
                             <DeleteBtn />
                         {this.state.savedBooks.map(book => (

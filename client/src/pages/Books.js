@@ -68,7 +68,7 @@ class Books extends Component{
                                     {this.state.books.map(book => {
                                         return(
                                             <BookListItem
-                                            key={book.volumeInfo.etag}
+                                            key={book.etag}
                                             title={book.volumeInfo.title}
                                             authors={book.volumeInfo.authors}
                                             image={book.volumeInfo.imageLinks.smallThumbnail}

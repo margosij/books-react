@@ -2,7 +2,8 @@ import React from "react";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 // import Books from "./pages/Books"
 // import Nav from "./components/Nav"
-import Saved from "./pages/saved"
+// import Saved from "./pages/saved"
+import SaveBooks from "./components/appLayout"
 
 function App() {
   return(
@@ -16,7 +17,8 @@ function App() {
     //   </Router>
     // </div>
     // <Books/>
-    <Saved/>
+    // <Saved/>
+    <SaveBooks />
   )
 }
 
