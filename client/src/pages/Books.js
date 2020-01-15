@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Jumbotron from "../components/Jumbotron"
-import Nav from "../components/Nav"
 import Button from "../components/Button"
 import API from "../utils/API"
 import { Container, Row, Col } from "../components/Grid"
@@ -29,7 +28,6 @@ class Books extends Component{
     render() {
         return(
             <div>
-            <Nav/>
                 <Jumbotron/>
                 <Container>
                     <Row>
@@ -68,8 +66,9 @@ class Books extends Component{
                                     {this.state.books.map(book => {
                                         return(
                                             <BookListItem
-                                            key={book.etag}
+                                            key={book.key}
                                             title={book.volumeInfo.title}
+                                            description={book.volumeInfo.description}
                                             authors={book.volumeInfo.authors}
                                             image={book.volumeInfo.imageLinks.smallThumbnail}
                                             link={book.selfLink}

@@ -12,19 +12,20 @@ class SaveBooks extends Component {
 
     componentDidMount() {
         API.getBook()
-        .then(res => { console.log(res, "COMPONENT RES")
+        .then(res => {console.log(res, "what's in the res")
             this.setState({ savedBooks: res })})
         .catch(err => console.log(err))
     }
 
-    handleDeleteButton = id => {
-        API.deleteBook(id)
+    handleDeleteButton = event => {
+        const deleteThisBook = event
+        console.log(event, "finding the target")
+        API.deleteBook(deleteThisBook)
         .then(res => this.componentDidMount())
         .catch(err => console.log(err))
     }
 
     render() {
-        console.log(this.state, "consoling the state!")
         if(this.state.savedBooks && !this.state.savedBooks.length) return "Loading!";
         return(
             <Container>

@@ -10,9 +10,11 @@ export function BookList({ children }) {
 }
 
 export function BookListItem({
+    id,
     key,
     image = "https://placehold.it/100x100",
     title,
+    description,
     authors,
     link,
     date
@@ -24,8 +26,10 @@ export function BookListItem({
     const handleFormSubmit = event => {
         event.preventDefault() 
             API.saveBook({
+                id: id,
                 key: key,
                 title: title,
+                description: description,
                 link: link,
                 authors: authors[0],
                 image: image,
@@ -44,6 +48,7 @@ export function BookListItem({
                     <Col size="xs-8 sm-9">
                         <SaveBtn onClick={handleFormSubmit} />
                         <h3>{title}</h3>
+                        <p>Description: {description}</p>
                         <p>Author: {authors}</p>
                         <a rel="noopener noreferrer" target="_blank" href={link}>Here's the Link!</a>
                         <p>Date: {date}</p>
