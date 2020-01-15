@@ -4,25 +4,10 @@ import { Container, Row, Col } from "../Grid"
 import "./style.css"
 import SaveBtn from "../SaveButton"
 import API from "../../utils/API"
-// import API from "../../utils/"
 
 export function BookList({ children }) {
     return <ul className="list-group">{children}</ul>
 }
-
-// export function handleFormSubmit({ event }) {
-//     event.preventDefault()
-//     if(this.state.bookSearch) {
-//         API.saveBook({
-//             title: this.state.title,
-//             authors: this.state.authors,
-//             image: this.state.image,
-//             date: this.state.date
-//         })
-//         .then(res => this.loadBooks())
-//         .catch(err => console.log(err))
-//     }
-// }
 
 export function BookListItem({
     key,
@@ -41,7 +26,8 @@ export function BookListItem({
             API.saveBook({
                 key: key,
                 title: title,
-                authors: authors,
+                link: link,
+                authors: authors[0],
                 image: image,
                 date: date
             })

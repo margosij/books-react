@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-import Jumbotron from "../../../src/components/Jumbotron"
-import { Row, Col } from "../../../src/components/Grid"
+// import Jumbotron from "../components/Jumbotron"
+import { Row, Col, Container } from "../components/Grid"
 import API from "../utils/API"
 import Layout from "../components/appLayout"
 import { List } from "../components/List"
@@ -30,15 +30,16 @@ class Saved extends Component {
 
     render() {
         return (
-            <>
-            <Jumbotron />
+            <li className="list-group-item">
+            {/* <Jumbotron /> */}
+            <Container>
             <Row>
-                <Col>
+                <Col size="xs-4 sm-2">
                     {this.state.savedBooks ? (
                         <List>
                         {this.state.savedBooks.map(book => (
                             <Layout
-                            key={book.etag}
+                            // key={book.key}
                             title={book.title}
                             authors={book.authors}
                             image={book.image}
@@ -53,7 +54,8 @@ class Saved extends Component {
 
                 </Col>
             </Row>
-            </>
+            </Container>
+        </li>
         )
     }
 }

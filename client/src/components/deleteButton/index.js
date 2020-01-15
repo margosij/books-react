@@ -3,7 +3,9 @@ import "./style.css"
 
 function DeleteBtn(props) {
     return(
-        <span className="delete-button btn btn-danger float-right" {...props} role="button" tabIndex="0">X</span>
+        <button type="button"
+        onClick={e => props.onClick(e)}
+        className={`btn btn-danger mx-2 ${props["data-value"]}`} {...props} >X</button>
     )
 }
 

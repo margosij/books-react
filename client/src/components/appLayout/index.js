@@ -26,19 +26,6 @@ class Layout extends Component{
         .catch(err => console.log(err))
     }
 
-    // handleFormSubmit = event => {
-    //     event.preventDefault()
-    //     if(this.state.bookSearch) {
-    //         API.saveBook({
-    //             title: this.state.title,
-    //             authors: this.state.authors,
-    //             image: this.state.image,
-    //             date: this.state.date
-    //         })
-    //         .then(res => this.loadBooks())
-    //         .catch(err => console.log(err))
-    //     }
-    // }
     render() {
         return(
             <div>
