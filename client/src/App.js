@@ -1,6 +1,6 @@
 import React from "react";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-// import Layout from "./components/appLayout"
+// import Books from "./pages/Books"
 // import Nav from "./components/Nav"
 import Saved from "./pages/saved"
 
@@ -15,7 +15,7 @@ function App() {
     //     </Switch>
     //   </Router>
     // </div>
-    // <Layout/>
+    // <Books/>
     <Saved/>
   )
 }

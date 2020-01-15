@@ -1,90 +1,37 @@
 import React, { Component } from 'react'
 import Jumbotron from "../Jumbotron"
-import Nav from "../Nav"
-import Button from "../Button"
 import API from "../../utils/API"
-import { Container, Row, Col } from "../Grid"
-import Input from "../Form"
-import { BookList, BookListItem } from "../BookList"
-// import ButtonContainer from "../ButtonContainer"
+import { Container } from "../Grid"
+import SavedLayout from "../savedLayout"
 
-class Layout extends Component{
+
+class SaveBooks extends Component {
     state = {
-        books: [],
-        bookSearch: ""
+        savedBooks: []
     }
-    handleInputChange = event => {
-        const { name, value } = event.target;
-        this.setState({
-            [name]: value
-        })
+
+    componentDidMount() {
+        API.getBook()
+        .then(res => this.setState({ savedBooks: res.data }))
+        .catch(err => console.log(err))
     }
-    handleSubmitForm = event => {
-        event.preventDefault()
-        API.searchBooks(this.state.bookSearch)
-        .then(res => this.setState({ books: res.data.items }))
+
+    handleDeleteButton = id => {
+        API.deleteBook(id)
+        .then(res => this.componentDidMount())
         .catch(err => console.log(err))
     }
 
     render() {
         return(
-            <div>
-            <Nav/>
-                <Jumbotron/>
+            <Container>
+                <Jumbotron />
                 <Container>
-                    <Row>
-                        <Col size="md-12">
-                            <form>
-                                <Container>
-                                    <Row>
-                                        <Col size="xs-9 sm-10">
-                                            <Input
-                                            name="bookSearch"
-                                            value={this.state.bookSearch}
-                                            onChange={this.handleInputChange}
-                                            placeholder="Search for a book"
-                                            />
-                                        </Col>
-                                        <Col size="xs-3 sm-2">
-                                            <Button
-                                            onClick={this.handleSubmitForm}
-                                            type="success"
-                                            className="input-lg"
-                                            >
-                                            Search
-                                            </Button>
-                                        </Col>
-                                    </Row>
-                                </Container>
-                            </form>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col size="xs-12">
-                            {!this.state.books.length ? (
-                                <h1 className="text-center">No Books to Display</h1>
-                            ) : (
-                                <BookList>
-                                    {this.state.books.map(book => {
-                                        return(
-                                            <BookListItem
-                                            key={book.volumeInfo.etag}
-                                            title={book.volumeInfo.title}
-                                            authors={book.volumeInfo.authors}
-                                            image={book.volumeInfo.imageLinks.smallThumbnail}
-                                            link={book.selfLink}
-                                            date={book.volumeInfo.publishedDate}
-                                            />
-                                        )
-                                    })}
-                                </BookList>
-                            )}
-                        </Col>
-                    </Row>
+                    <SavedLayout savedBooks={this.state.savedBooks} handleDeleteButton={this.handleDeleteButton} />
                 </Container>
-            </div>
+            </Container>
         )
     }
 }
 
-export default Layout
+export default SaveBooks
