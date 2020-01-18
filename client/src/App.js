@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-import Books from "./pages/Books"
+import Books from "./pages"
 import Nav from "./components/Nav"
 import SaveBooks from "./components/appLayout"
 
