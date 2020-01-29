@@ -71,7 +71,7 @@ class Books extends Component{
                                             description={book.volumeInfo.description}
                                             authors={book.volumeInfo.authors}
                                             image={book.volumeInfo.imageLinks.smallThumbnail}
-                                            link={book.selfLink}
+                                            link={book.accessInfo.webReaderLink}
                                             date={book.volumeInfo.publishedDate}
                                             />
                                         )
